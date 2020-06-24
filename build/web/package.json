@@ -1,0 +1,150 @@
+{
+  "name": "bonade",
+  "version": "1.0.6",
+  "description": "im of electron",
+  "main": "./dist/main/main.js",
+  "private": true,
+  "scripts": {
+    "dev-electron": "cross-env NODE_ENV=development VUE_APP_TITLE=development node build/webpack.config.js --enable-transparent-visuals --disable-gpu",
+    "test-electron": "cross-env NODE_ENV=development VUE_APP_TITLE=test node build/webpack.config.js --enable-transparent-visuals --disable-gpu",
+    "exp-electron": "cross-env NODE_ENV=development VUE_APP_TITLE=experience node build/webpack.config.js --enable-transparent-visuals --disable-gpu",
+    "pro-electron": "cross-env NODE_ENV=development VUE_APP_TITLE=production node build/webpack.config.js --enable-transparent-visuals --disable-gpu",
+    "build:main": "webpack --config build/main/webpack.config.js",
+    "build:renderer": "webpack --config build/renderer/webpack.config.js",
+    "build:electron": "electron-builder --win --x64",
+    "build:electronMac": "electron-builder --macos",
+    "build:electromWin32": "electron-builder --win --ia32",
+    "build:electromLinux": "electron-builder --linux",
+    "releaseTestWin": "cross-env VUE_APP_TITLE=test npm run build:renderer && cross-env VUE_APP_TITLE=test npm run build:main && cross-env VUE_APP_TITLE=test npm run build:electron",
+    "releaseExpWin": "cross-env VUE_APP_TITLE=experience npm run build:renderer && cross-env VUE_APP_TITLE=experience npm run build:main && cross-env VUE_APP_TITLE=experience npm run build:electron",
+    "releaseTestMac": "cross-env VUE_APP_TITLE=test npm run build:renderer && cross-env VUE_APP_TITLE=test npm run build:main && cross-env VUE_APP_TITLE=test npm run build:electronMac",
+    "releaseExpMac": "cross-env VUE_APP_TITLE=experience npm run build:renderer && cross-env VUE_APP_TITLE=experience npm run build:main && cross-env VUE_APP_TITLE=experience npm run build:electronMac",
+    "releaseProWin64": "cross-env VUE_APP_TITLE=production npm run build:renderer && cross-env VUE_APP_TITLE=production npm run build:main && cross-env VUE_APP_TITLE=production npm run build:electron",
+    "releaseProMac": "cross-env VUE_APP_TITLE=production npm run build:renderer && cross-env VUE_APP_TITLE=production npm run build:main && cross-env VUE_APP_TITLE=production npm run build:electronMac",
+    "releaseProWin32": "cross-env VUE_APP_TITLE=production npm run build:renderer && cross-env VUE_APP_TITLE=production npm run build:main && cross-env VUE_APP_TITLE=production npm run build:electromWin32",
+    "releaseProLinux": "cross-env VUE_APP_TITLE=production npm run build:renderer && cross-env VUE_APP_TITLE=production npm run build:main && cross-env VUE_APP_TITLE=production npm run build:electromLinux",
+    "dev-serve": "cross-env NODE_ENV=development BASE_ENV=web VUE_APP_TITLE=development webpack-dev-server --config build/web/webpack.config.js",
+    "test-serve": "cross-env NODE_ENV=development BASE_ENV=web VUE_APP_TITLE=test webpack-dev-server --config build/web/webpack.config.js",
+    "exp-serve": "cross-env NODE_ENV=development BASE_ENV=web VUE_APP_TITLE=experience webpack-dev-server --config build/web/webpack.config.js",
+    "pro-serve": "cross-env NODE_ENV=development BASE_ENV=web VUE_APP_TITLE=production webpack-dev-server --config build/web/webpack.config.js",
+    "test": "cross-env NODE_ENV=production BASE_ENV=web VUE_APP_TITLE=test webpack --progress --colors --config build/web/webpack.config.js",
+    "experience": "cross-env NODE_ENV=production BASE_ENV=web VUE_APP_TITLE=experience webpack --progress --colors --config build/web/webpack.config.js",
+    "demo": "cross-env NODE_ENV=production BASE_ENV=web VUE_APP_TITLE=demo webpack --progress --colors --config build/web/webpack.config.js",
+    "build": "cross-env NODE_ENV=production BASE_ENV=web VUE_APP_TITLE=production webpack --progress --colors --config build/web/webpack.config.js"
+  },
+  "author": "Bonade group",
+  "license": "ISC",
+  "build": {
+    "productName": "薪友",
+    "appId": "bonadeIM.app",
+    "directories": {
+      "output": "download"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://bndzhongtai.oss-cn-shenzhen.aliyuncs.com"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "installerIcon": "./weilai.ico",
+      "uninstallerIcon": "./weilai.ico"
+    },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "./logo1.png",
+      "artifactName": "bndIm.${ext}"
+    },
+    "win": {
+      "icon": "./Untitled-2.ico",
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ],
+      "artifactName": "bndIm.${ext}"
+    }
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "electron-log": "^4.1.1",
+    "electron-shortcut-capture": "^1.1.11",
+    "electron-updater": "^4.2.0",
+    "eventemitter3": "^4.0.0",
+    "iview": "^3.3.0",
+    "js-md5": "^0.7.3",
+    "jsdom": "^15.1.1",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.isequal": "^4.5.0",
+    "lodash.merge": "^4.5.0",
+    "lowdb": "^1.0.0",
+    "node-jsencrypt": "^1.0.0",
+    "os": "^0.1.1",
+    "plupload": "^2.3.6",
+    "qs": "^6.8.0",
+    "style-resources-loader": "^1.3.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.3",
+    "vue": "^2.6.10",
+    "vue-clipboard2": "^0.3.0",
+    "vue-draggable-resizable": "^2.0.0-rc2",
+    "vue-observe-visibility": "^0.4.6",
+    "vue-pdf": "^4.0.7",
+    "vue-router": "^3.0.5",
+    "vuedraggable": "~2.20.0",
+    "vuescroll": "^4.14.4",
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/runtime": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "electron": "^7.1.2",
+    "electron-builder": "^21.2.0",
+    "electron-debug": "^3.0.1",
+    "electron-dev-webpack-plugin": "^1.0.4",
+    "electron-devtools-installer": "^2.2.4",
+    "file-loader": "^4.2.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-loader": "~1.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.6.0",
+    "node-sass": "^4.14.1",
+    "sass": "1.26.2",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.2.0",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "4.41.0",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}

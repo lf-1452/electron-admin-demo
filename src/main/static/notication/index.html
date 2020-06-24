@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+    .notication-wrap {
+      width: 200px;
+      background-color: #fff;
+    }
+    .notication-wrap .notication-title {
+      width: 100%;
+      line-height: 30px;
+      background-color: #E9EEF2;
+      padding: 0px 12px;
+      position: relative;
+      color: #868E94;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+    .notication-title img {
+      width: 15px;
+      vertical-align: -2px;
+      margin-right: 2px;
+    }
+    .notication-title .tilte-right {
+      position: absolute;
+      cursor: pointer;
+      right: 12px;
+      color: #7D8790;
+    }
+    .notication-com {
+      font-size: 12px;
+      padding: 5px 0px;
+      color: #353739;
+      position: relative;
+    }
+    .notication-com .com-list-wrap {
+      padding: 0 12px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .notication-com .com-list-wrap:hover {
+      background-color: #e2e2e2;
+    }
+    .notication-com .com-list {
+      line-height: 30px;
+      height: 30px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .notication-com .com-list img {
+      width: 16px;
+      margin-right: 6px;
+      vertical-align: 6px;
+    }
+    .notication-com .com-list .com-title {
+      display: inline-block;
+      width: 118px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .notication-com .com-list .com-num{
+      position: absolute;
+      right: 12px;
+      color: #7D8790;
+    }
+    .notication-com .com-list.more {
+      text-align: center;
+      color: #7D8790;
+      border-top: 1px solid #F0F2F5;
+      margin-top: 5px;
+      margin-bottom: -5px;
+    }
+    .cursor-wrap{
+      width: 200px;
+      position: relative;
+    }
+    .tray-cursor {
+      position: absolute;
+      height: 100%;
+      right: 0;
+      top: 0;
+    /*  background-color:rgba(202, 206, 211, 0.1);*/
+    }
+  </style>
+</head>
+<body>
+<div class="notication-wrap"
+     id="notication"
+     onmousemove="trayEnter('notication')"
+     onmouseenter="trayEnter('notication')"
+     onmouseleave="trayLeave('notication')">
+  <div class="notication-title">
+    <img src="./title.png">
+    <span>薪友</span>
+    <span class="tilte-right" onclick="send({type: 'close'})">取消闪动</span>
+  </div>
+  <div class="notication-com" id="noticationCom">
+   <!-- <div class="com-list-wrap">
+      <div class="com-list">
+        <img src="./msg.png">
+        <span class="com-title">有梦想的人不睡有梦想的人不睡有梦想的人不睡</span>
+        <span class="com-num">33</span>
+      </div>
+    </div>
+    <div class="com-list-wrap">
+      <div class="com-list">
+        <img src="./msg.png">
+        <span class="com-title">有梦想的人不睡有梦想的人不睡有梦想的人不睡</span>
+        <span class="com-num">33</span>
+      </div>
+    </div>
+    <div class="com-list-wrap">
+      <div class="com-list">
+        <img src="./msg.png">
+        <span class="com-title">有梦想的人不睡有梦想的人不睡有梦想的人不睡</span>
+        <span class="com-num">33</span>
+      </div>
+    </div>
+    <div class="com-list-wrap">
+      <div class="com-list">
+        <img src="./msg.png">
+        <span class="com-title">有梦想的人不睡有梦想的人不睡有梦想的人不睡</span>
+        <span class="com-num">33</span>
+      </div>
+    </div>
+    <div class="com-list more">
+      更多
+    </div>-->
+  </div>
+</div>
+<div class="cursor-wrap"
+     id="cursor">
+  <div class="tray-cursor"
+       id="tray"
+       onclick="trayClick()"
+       onmousemove="trayEnter('notication')"
+       onmouseenter="trayEnter('tray')"
+       onmouseleave="trayLeave('tray')">
+  </div>
+</div>
+</body>
+<script>
+  let notifyList = []; //存储消息列表
+  let {ipcRenderer} = require('electron');
+  let dom = document.getElementById('noticationCom'); //托盘内容
+  let cursor =  document.getElementById('cursor'); //底部空白部分
+  let tray = document.getElementById('tray'); //tay罩层
+  let time = new Date().getTime(); //时间
+  let isTray = true;    //默认是点击原生系统托盘
+  let platform = ''; //系统平台
+
+  ipcRenderer.on("noticationSend", (event, obj) => {
+    let data = obj.msgs,
+      closeMsg = obj.notifyMsg;
+    notifyList = data;
+    platform = obj.platform;
+
+    //删除所有子节点
+    var childs = dom.childNodes;
+    for (let i = childs.length - 1; i >= 0; i--) {
+      dom.removeChild(childs[i]);
+    }
+
+    //创建子节点
+    let child = '';
+    for (let i = 0; i < data.length; i++) {
+      if (i <= 3) {
+        child += '<div class="com-list-wrap"><div class="com-list">';
+        child += '<img src="./msg.png">';
+        child += '<span class="com-title">';
+
+        if ( data[i].scene ==2 ||  data[i].scene ==3 ||  data[i].scene ==4) {
+          child += data[i].title;
+        } else {
+          child += data[i].toName;
+        }
+        child += '</span>';
+        //取消闪动 群聊单聊： 未读数不叠加
+        let count = data[i].count;
+        if (closeMsg[data[i].sid] && closeMsg[data[i].sid].isTray) {
+          count = data[i].count - closeMsg[data[i].sid].count;
+        }
+
+        child += '<span class="com-num">' +count;
+        child += '</span>';
+        child += '</div></div>';
+      } else {
+        break;
+      }
+    }
+
+    if (data.length > 4) {
+      child += '<div class="com-list-wrap" data-more="more"><div class="com-list more">' + '更多';
+      child += '</div></div>';
+    }
+
+    dom.innerHTML = child;
+    if (obj.platform == 'darwin') {
+      cursor.style.display = 'none';
+    }
+    cursor.style.height = obj.height + 'px';
+    tray.style.width = obj.width + 'px';
+    setTimeout( () => {
+      time = new Date().getTime(); //时间
+      monitor();
+      isTray = true;
+      autoTray();
+      //页面渲染完，显示弹窗，以免有时候出现空白
+      ipcRenderer.send('notifyWinShow');
+    },10)
+  });
+  //监听点击事件
+  function monitor() {
+    var obj = document.getElementsByClassName('com-list-wrap');
+
+    for(var i=0;i<obj.length;i++){
+      (function(i){
+        obj[i].addEventListener("click",function (){
+          if (obj[i].getAttribute('data-more') && obj[i].getAttribute('data-more') == 'more') {
+            send({type: 'more',msg: {}});
+          } else {
+            send({type: 'msg',msg:notifyList[i],index:i});
+          }
+        },false);
+      })(i);
+    }
+  }
+  //发送点击事件
+  function send(data) {
+    ipcRenderer.send('notifyWinClick',data);
+  }
+  //鼠标进入或者移动
+  function trayEnter(type) {
+    isTray = false;
+    time = new Date().getTime();
+    ipcRenderer.send('notifyWinShow');
+  }
+  //鼠标离开
+  function trayLeave(type) {
+    setTimeout( () => {
+      let newTime = new Date().getTime();
+
+      if (newTime - time >= 600) {
+        ipcRenderer.send('notifyWinHide');
+      }
+    },600);
+  }
+  //托盘icon点击
+  function trayClick() {
+    ipcRenderer.send('trayClick');
+  }
+
+  //原生自动运行
+  function autoTray() {
+    setTimeout( () => {
+      if (isTray) {
+        let newTime = new Date().getTime();
+
+        if (newTime - time >= 1000) {
+          ipcRenderer.send('notifyWinHide');
+        }
+      }
+    },1000);
+  }
+</script>
+</html>

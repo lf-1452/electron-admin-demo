@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.1 (72631) - https://sketchapp.com -->
+    <title>最小化</title>
+    <desc>Created with Sketch.</desc>
+    <g id="新版薪友" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="查看图片" transform="translate(-115.000000, -65.000000)">
+            <g id="Window-/-Traffic-Lights" transform="translate(95.000000, 65.000000)">
+                <g id="最小化" transform="translate(20.000000, 0.000000)">
+                    <circle id="Minimize" stroke="#E0A028" stroke-width="0.5" fill="#FFBE2F" cx="6" cy="6" r="5.75"></circle>
+                    <polygon id="Rectangle-Copy-2" fill="#995702" points="2.5 5.5 9.5 5.5 9.5 6.5 2.5 6.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

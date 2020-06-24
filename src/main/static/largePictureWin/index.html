@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>戚水仙分享图片</title>
+  <link href="./csss/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+ <div class="contain-wrap">
+   <div class="contain-head app-drag">
+     <!--头部图片相关信息，个人信息-->
+     <div class="head-msg">
+       <div class="people-msg">
+         <p class="head-name"></p>
+         <p class="item-msg">
+           <span class="time"> </span>
+           <span class="size"></span>
+         </p>
+       </div>
+       <!--图片相关操作点击icon-->
+       <div class="img-icon">
+         <div class="img-btn">
+           <img src="./images/icon02.svg" class="app-no-drag" onclick="fnWheel(false)">
+           <img src="./images/icon03.svg"  class="app-no-drag" onclick="fnWheel(true)">
+           <img src="./images/icon01.svg"  class="app-no-drag" onclick="handelOriginal()">
+           <img src="./images/icon04.svg"  class="app-no-drag" onclick="handleRotating()">
+           <img src="./images/icon05.svg"  class="app-no-drag" onclick="download()">
+         </div>
+
+         <div class="win-btn">
+           <img src="./images/icon15.svg"  class="app-no-drag" onclick="handleShrink()">
+           <img src="./images/icon13.svg" class="maxmized app-no-drag" onclick="handleUnfold()">
+           <img src="./images/icon14.svg"  class="app-no-drag" onclick="handleClose()">
+         </div>
+       </div>
+       <!--图片相关操作点击icon-->
+     </div>
+     <!--头部图片相关信息，个人信息 end-->
+   </div>
+   <!--图片信息-->
+   <div class="img-msg">
+      <div class="view-com app-drag">
+        <i class="loading"></i>
+        <img id="largeImg" class="large-img app-no-drag" src="">
+
+        <div class="loading-error">
+          <div class="loading-error-com">
+            <img class="img-error" src="./images/picture-error.png">
+            <p>加载有误，请关闭窗口重打开。。。。。</p>
+          </div>
+        </div>
+      </div>
+      <!--箭头信息-->
+      <div class="arrow-btn-wrap">
+        <div  class="arrow-left arrow-btn app-no-drag" onclick="handelLeftArrow()">
+          <img class="active" src="./images/icon08.svg">
+        </div>
+        <div  class="arrow-left arrow-btn app-no-drag no-active">
+          <img src="./images/icon10.svg">
+        </div>
+        <div class="arrow-right arrow-btn app-no-drag" onclick="handelRightArrow()">
+          <img  src="./images/icon09.svg">
+        </div>
+        <div  class="arrow-right no-active arrow-btn">
+          <img  src="./images/icon07.svg">
+        </div>
+      </div>
+     <!--箭头信息 end-->
+   </div>
+   <!--图片信息 end-->
+ </div>
+</body>
+<script type="text/javascript" src="./js/index.js" ></script>
+<script>
+  let {ipcRenderer} = require('electron');
+  const remote = require("electron").remote;
+  // 最大化时退出全屏
+  document.addEventListener("keydown",event => {
+    switch (event.key) {
+        case "Escape":
+            if (remote.getCurrentWindow().isFullScreen()) {
+                remote.getCurrentWindow().setFullScreen(false);
+            }
+            break;
+          }
+  });
+  let ArrowDomArr = document.querySelectorAll('.arrow-btn');
+  let currentImg = {}, //存储当前图片信息
+      preHttpData = [],
+      nextHttpData = [],
+      chatMsgImg = [];
+  //图像初始化
+  ipcRenderer.on("imgSend", (event, obj) => {
+    if (obj.isMac) {
+      document.querySelector('.contain-wrap').style.paddingTop = 15 + 'px';
+      document.querySelector('.contain-head .win-btn').style.display = 'none';
+    }
+    chatMsgImg = [obj];
+    console.log('初始化')
+    initPage(obj,0);
+    handleArrowIcon();
+  });
+
+  //获取数组
+  ipcRenderer.on("senArr", (event, obj) => {
+    let arr = [];
+    if (obj.type == 'pre') {
+      preHttpData = obj.httpData;
+      arr = [...obj.httpData,...chatMsgImg];
+      currentImg.index = obj.httpData.length + currentImg.index;
+    } else {
+     nextHttpData = obj.httpData;
+      arr = [...chatMsgImg,...obj.httpData];
+    }
+     chatMsgImg = arr;
+    console.log(currentImg,'.....currentImg');
+    handleArrowIcon();
+  });
+  //键盘事件
+  document.onkeydown = function(e) {
+    let key = window.event.keyCode;
+    handleKeyup(key);
+  };
+
+  //页面初始化
+  function initPage(obj,index) {
+    console.log(obj,index,'页面初始化');
+    currentImg.url = obj.body.url;
+    currentImg.name = obj.fname;
+    currentImg.filename = obj.body.filename;
+    currentImg.mid = obj.mid;
+    currentImg.index = index;
+    document.querySelector('.large-img').setAttribute('src',  currentImg.url);
+
+    if (currentImg.name) {
+      document.title =  currentImg.name + '分享的图片';
+      document.querySelector('.people-msg .head-name').innerHTML = currentImg.name + '分享的图片';
+    } else {
+      document.title = '查看图片';
+      document.querySelector('.people-msg .head-name').innerHTML = '';
+    }
+
+    if (obj.createTime) {
+      document.querySelector('.people-msg .item-msg .time').innerHTML = getDate(obj.createTime,'Y/M/D h:m');
+    } else {
+      document.querySelector('.people-msg .item-msg .time').innerHTML = '';
+    }
+
+    if (obj.body.filesize) {
+      document.querySelector('.people-msg .item-msg .size').innerHTML = handleFileSize(obj.body.filesize);
+    } else {
+      document.querySelector('.people-msg .item-msg .size').innerHTML = '';
+    }
+
+    imageLargeInit(obj.body.url,document.getElementById('largeImg'))
+  }
+
+  /**
+   * @Description: 时间戳转年月日时分秒，格式自定义
+   * number: 传入时间戳
+   * format：返回格式，支持自定义，但参数必须与formateArr里保持一致
+   *
+   * 例：formatTime(1488481383, 'Y/M/D h:m:s')    //转换为日期：2017/03/03 03:03:03
+   *     formatTime(1488481383, 'Y-M-D h:m:s')    //转换为日期：2017-03-03 03:03:03
+   *     formatTime(1488481383, 'h:m')    //转换为日期：03:03
+   */
+  function getDate (number, format){
+    let formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+    let returnArr = [];
+    let date = new Date(number);
+
+    returnArr.push(date.getFullYear());
+    returnArr.push(formatNumber(date.getMonth() + 1));
+    returnArr.push(formatNumber(date.getDate()));
+    returnArr.push(formatNumber(date.getHours()));
+    returnArr.push(formatNumber(date.getMinutes()));
+    returnArr.push(formatNumber(date.getSeconds()));
+
+    for (let i in returnArr) {
+      format = format.replace(formateArr[i], returnArr[i]);
+    }
+    return format;
+  }
+  //时间数据单位数补0
+  const formatNumber = (n) => {
+    n = n.toString();
+    return n[1] ? n : '0' + n
+  };
+  //计算文件大小
+  function handleFileSize(filesize) {
+    if (!filesize) return ;
+    let obj = {
+      size: 0,
+      unit: 'B'
+    };
+
+    if (filesize > (1024*1024*1024)) { //G
+      obj.size = (filesize/1024/1024/1024).toFixed(2);
+      obj.unit = 'G';
+    } else if(filesize > (1024*1024)){ //M
+      obj.size = (filesize/1024/1024).toFixed(2);
+      obj.unit = 'M';
+    } else if(filesize > 1024){ //K
+      obj.size = (filesize/1024).toFixed(2);
+      obj.unit = 'K';
+    } else { //B
+      obj.size = filesize;
+      obj.unit = 'B';
+    }
+    return obj.size + obj.unit;
+  }
+
+  //宿小窗口
+  function handleShrink() {
+    ipcRenderer.send("largeWinMinimize");
+  }
+  //窗口最大化
+  function handleUnfold() {
+   let maxmizedBtn = document.querySelector('.win-btn .maxmized');
+   let iconUrl = maxmizedBtn.getAttribute('src');
+
+   if (iconUrl.indexOf('13') > 0) {
+     maxmizedBtn.setAttribute('src','./images/icon16.svg');
+   } else {
+     maxmizedBtn.setAttribute('src','./images/icon13.svg');
+   }
+    ipcRenderer.send("largeWinMaximization");
+  }
+  //关闭窗口
+  function handleClose() {
+    console.log('关闭窗口');
+    ipcRenderer.send("largeWinCloseWindow");
+  }
+  //下载
+  function download() {
+    let filename = currentImg.filename;
+    let url = currentImg.url;
+
+   getBlob ( url , function ( blob ) {
+      if ( window.navigator.msSaveOrOpenBlob ) {
+        navigator.msSaveBlob ( blob , filename );
+      } else {
+        var link = document.createElement ( 'a' );
+        var body = document.querySelector ( 'body' );
+        link.href = window.URL.createObjectURL ( blob );
+        link.download = filename;
+        link.style.display = 'none';
+        body.appendChild ( link );
+        link.click ();
+        body.removeChild ( link );
+        window.URL.revokeObjectURL ( link.href );
+      }
+    } );
+  }
+  function getBlob ( url , cb ) {
+    var xhr = new XMLHttpRequest ();
+    xhr.open ( 'GET' , url , true );
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+      if ( xhr.status === 200 ) {
+        cb ( xhr.response );
+      }
+    }
+    xhr.send ();
+  }
+  //左切换
+  function handelLeftArrow() {
+    if (currentImg.index == 0 && preHttpData.length < 20) {
+      return;
+    }
+
+    currentImg.index--;
+    if (!chatMsgImg[currentImg.index]) {
+      currentImg.index = 0;
+    }
+
+    initPage(chatMsgImg[currentImg.index],currentImg.index);
+
+    if (currentImg.index == 1 && preHttpData.length >= 20) {
+      //第二张请求接口
+      ipcRenderer.send('sendLargeWin',{item: chatMsgImg[currentImg.index],type: 'pre'});
+    }
+
+    handleArrowIcon();
+  }
+  //右切换
+  function handelRightArrow() {
+    if (currentImg.index == chatMsgImg.length -1 && nextHttpData.length < 20) {
+      return;
+    }
+
+    currentImg.index++;
+    if (!chatMsgImg[currentImg.index]) {
+      currentImg.index = chatMsgImg.length - 1;
+    }
+    initPage(chatMsgImg[currentImg.index],currentImg.index);
+
+    if (currentImg.index == chatMsgImg.length -2 && nextHttpData.length >= 20) {
+      //倒数第二张请求接口
+      ipcRenderer.send('sendLargeWin',{item: chatMsgImg[currentImg.index],type: 'next'});
+    }
+
+    handleArrowIcon();
+  }
+  //处理箭头icon事件
+  function handleArrowIcon() {
+    if (chatMsgImg.length <=  1) {
+      let i;
+      for (i = 0; i < ArrowDomArr.length; i++) {
+        ArrowDomArr[i].style.display = "none";
+      }
+      return;
+    }
+
+    if (currentImg.index == 0 && preHttpData.length < 20)  {
+      ArrowDomArr[0].style.display = "none";
+      ArrowDomArr[1].style.display = "block";
+    } else {
+      ArrowDomArr[0].style.display = "block";
+      ArrowDomArr[1].style.display = "none";
+    }
+
+    if (currentImg.index == chatMsgImg.length -1  && nextHttpData.length < 20)  {
+      ArrowDomArr[2].style.display = "none";
+      ArrowDomArr[3].style.display = "block";
+    } else {
+      ArrowDomArr[2].style.display = "block";
+      ArrowDomArr[3].style.display = "none";
+    }
+  }
+  //键盘事件
+  function handleKeyup(key) {
+    if (key == 37) {
+      //键盘左箭头
+     handelLeftArrow();
+    } else if (key == 39) {
+      //键盘右箭头
+     handelRightArrow();
+    } else if (key == 27 ) {
+      //键盘esc
+      handleClose();
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>薪友系统</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    // 判断当前是否客户端
+    // ipcRenderer从渲染器进程到主进程的异步通信
+    // clipboard系统剪贴板上执行复制和粘贴操作
+    window.ipcRenderer = require('electron').ipcRenderer;
+    window.clipboard = require('electron').clipboard;
+    window.fs = require('fs');
+    window.remote = require('electron').remote;
+    window.Menu = require('electron').remote.Menu;
+    window.MenuItem  = require('electron').remote.MenuItem;
+    window.path = require('path');
+    // 检查更新
+    ipcRenderer.send("checkForUpdate");
+    // 接收信息
+    ipcRenderer.on("message", (event, text) => {
+      console.log(text);
+      // this.tips = text;
+    });
+    // 下载进度
+    ipcRenderer.on("downloadProgress", (event, progressObj) => {
+      console.log(progressObj);
+    });
+    // 更新完成
+    ipcRenderer.on("isUpdateNow", () => {
+      console.log('收到更新完成')
+      console.log('可以更新')
+      ipcRenderer.send("isUpdateNow");
+    });
+  </script>
+</body>
+
+</html>
