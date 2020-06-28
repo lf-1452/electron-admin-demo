@@ -1,6 +1,6 @@
-const jsRules = require('./jsRules')
-const styleRules = require('./styleRules')
-const fileRules = require('./fileRules')
+const jsRules = require('../commonJs/jsRules')
+const styleRules = require('../commonJs/styleRules')
+const fileRules = require('../commonJs/fileRules')
 const plugins = require('./plugins')
 const rootPath = 'src/renderer/bonade-im-part/src'
 const {

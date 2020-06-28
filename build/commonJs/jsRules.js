@@ -18,7 +18,7 @@ module.exports = [{
 			loader: 'ts-loader',
 			options: {
 				transpileOnly: true,
-				configFile: resolveUnderRootDir('build/renderer/tsconfig.json')
+				configFile: resolveUnderRootDir('build/commonJs/tsconfig.json')
 			}
 		}]
 	},
