@@ -5,14 +5,15 @@ import routes from './routers'
 Vue.use(Router);
 
 const router = new Router({
-  routes,
-  mode: 'history'
+    routes,
+    mode: 'history'
 });
 // 路由全局守卫
 router.beforeEach((to, from, next) => {
-  next();
+    next();
 });
-router.afterEach(to => {
-});
+
+// router.afterEach(to => {
+// });
 
 export default router

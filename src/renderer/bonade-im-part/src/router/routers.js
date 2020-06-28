@@ -1,12 +1,13 @@
-import Home from '@/view/home';
-let routerArr = [{
-    path: '/',
-    name: 'home',
-    component: Home,
-    meta: {
-        title: '首页'
+import Test from '@/view/test'
+let routerArr = [
+    {
+        path: '/',
+        name: 'test',
+        component: Test,
+        meta: {
+            title: 'test'
+        }
     }
-  }
 ];
 
 export default routerArr
