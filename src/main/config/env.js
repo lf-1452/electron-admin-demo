@@ -10,9 +10,9 @@ const config = {
     },
     production: {
         bClientId: '847ce78478a211e99c7e7cd30ad3a6a8',
-        url: "http://ztrhgzt.bndxqc.com/api/reimbursement/notoken/userLogin",
-        ticketurl: "http://ztrhgzt.bndxqc.com/api/oauth2-zt/api_create_ticket_redirect_token",
-        imTokenUrl: "https://imzt.bndxqc.com/api/oauth2-zt/component/api_create_ticket_token",
+        url: 'http://ztrhgzt.bndxqc.com/api/reimbursement/notoken/userLogin',
+        ticketurl: 'http://ztrhgzt.bndxqc.com/api/oauth2-zt/api_create_ticket_redirect_token',
+        imTokenUrl: 'https://imzt.bndxqc.com/api/oauth2-zt/component/api_create_ticket_token',
         pubKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXRyojOxs5Z8KBfnb6s+KcpE2bZdj+TPclUyKFNDV8oeXsoV6aUSuCOTBuNUTL31NgpqLNqJqNZU0q91O46xmbhzNbYanSbRqhdx9C/pgAElkXB3C/SoBHAZ/Lm/SyFaZoJoAOkD5p2IsrLLh7yt07MT3qrTr991B+5Je58CIizQIDAQAB',
     },
     test: {

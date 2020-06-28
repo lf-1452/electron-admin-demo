@@ -36,7 +36,7 @@ function createWindow() {
         minHeight: 640,
         icon: images.logo,
         zoomToPageWidth: true,
-        titleBarStyle: "hidden",
+        titleBarStyle: 'hidden',
         frame: false,
         resizable: true,
         transparent: true,
@@ -47,7 +47,7 @@ function createWindow() {
     })
 
     if ( process.platform != 'darwin') {   // 禁止Windows下双击最大化和调用maximize行为不一致导致的窗口尺寸变化
-      win.maximizable = false
+        win.maximizable = false
     }
     // 设置用户id
     app.setAppUserModelId(pkg.build.appId);

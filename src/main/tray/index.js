@@ -13,7 +13,7 @@ export default {
     instance: null,
     register(win) {
         this.instance = new Tray(images.tray);
-       /* this.instance.setToolTip('薪友');*/
+        /* this.instance.setToolTip('薪友');*/
         this.setMenu();
         this.click(win);
         this.mouseMove(win);
@@ -22,11 +22,11 @@ export default {
     // set the tray template
     setMenu() {
         const contextMenu = Menu.buildFromTemplate([{
-                label: '退出',
-                click: () => {
-                    BrowserWindow.getAllWindows().forEach(window => window.destroy())
-                }
-            }, //我们需要在这里有一个真正的退出（这里直接强制退出）
+            label: '退出',
+            click: () => {
+                BrowserWindow.getAllWindows().forEach(window => window.destroy())
+            }
+        }, //我们需要在这里有一个真正的退出（这里直接强制退出）
         ])
         this.instance.setContextMenu(contextMenu);
     },
@@ -47,7 +47,7 @@ export default {
     // register mouse-move methods
     mouseMove(win) {
         this.instance.on('mouse-move',event => {
-          childrenWin.noticationWin.showWin(this.instance);
+            childrenWin.noticationWin.showWin(this.instance);
         })
     },
     mouseLeave(win) {

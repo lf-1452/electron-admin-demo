@@ -29,4 +29,7 @@ module.exports = {
       // "semi": ["error", "always"],
       "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
   },
+  globals: {
+    'layer': true
+  }
 };
