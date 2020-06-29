@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
