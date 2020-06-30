@@ -1,5 +1,6 @@
+
 <template>
   <div>
-    layout
+    home12
   </div>
 </template>;
