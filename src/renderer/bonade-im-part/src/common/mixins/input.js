@@ -1,9 +1,9 @@
-const EVENT_CHANGE = 'change'
+const EVENT_CHANGE = 'change';
 
 export default {
-    methods: {
-        changeHander(e) {
-            this.$emit(EVENT_CHANGE, e)
-        }
+  methods: {
+    changeHander(e) {
+      this.$emit(EVENT_CHANGE, e);
     }
-}
+  }
+};

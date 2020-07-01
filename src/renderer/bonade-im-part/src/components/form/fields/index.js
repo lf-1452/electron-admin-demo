@@ -1,7 +1,7 @@
 function prepend(arr, item) {
-    return [item].concat(arr)
+  return [item].concat(arr);
 }
 
 export {
-    prepend
-}
+  prepend
+};

@@ -1,13 +1,13 @@
-import Test from '@/view/test'
+import Test from '@/view/test';
 let routerArr = [
-    {
-        path: '/',
-        name: 'test',
-        component: Test,
-        meta: {
-            title: 'test'
-        }
+  {
+    path: '/',
+    name: 'test',
+    component: Test,
+    meta: {
+      title: 'test'
     }
+  }
 ];
 
-export default routerArr
+export default routerArr;
