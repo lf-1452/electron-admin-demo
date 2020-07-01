@@ -6,16 +6,16 @@ function convertCurrency(money) {
 
   // 汉字的数字
   // eslint-disable-next-line no-array-constructor
-  var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+  var cnNums = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
   // 基本单位
   // eslint-disable-next-line no-array-constructor
-  var cnIntRadice = new Array('', '拾', '佰', '仟');
+  var cnIntRadice = ['', '拾', '佰', '仟'];
   // 对应整数部分扩展单位
   // eslint-disable-next-line no-array-constructor
-  var cnIntUnits = new Array('', '万', '亿', '兆');
+  var cnIntUnits = ['', '万', '亿', '兆'];
   // 对应小数部分单位
   // eslint-disable-next-line no-array-constructor
-  var cnDecUnits = new Array('角', '分', '毫', '厘');
+  var cnDecUnits = ['角', '分', '毫', '厘'];
   // 整数金额时后面跟的字符
   var cnInteger = '整';
   // 整型完以后的单位
@@ -30,7 +30,10 @@ function convertCurrency(money) {
   var chineseStr = '';
   // 分离金额后用的数组，预定义
   var parts;
-  if (money === '') { return ''; }
+
+  if (money === '') {
+    return '';
+  }
   money = parseFloat(money);
   if (money >= maxNum) {
     // 超出最大处理数字
@@ -54,11 +57,13 @@ function convertCurrency(money) {
   if (parseInt(integerNum, 10) > 0) {
     var zeroCount = 0;
     var IntLen = integerNum.length;
+
     for (var i = 0; i < IntLen; i++) {
       var n = integerNum.substr(i, 1);
       var p = IntLen - i - 1;
       var q = p / 4;
       var m = p % 4;
+
       if (n === '0') {
         zeroCount++;
       } else {
@@ -78,8 +83,10 @@ function convertCurrency(money) {
   // 小数部分
   if (decimalNum !== '') {
     var decLen = decimalNum.length;
+
     for (let i = 0; i < decLen; i++) {
       const n = decimalNum.substr(i, 1);
+
       if (n !== '0') {
         chineseStr += cnNums[Number(n)] + cnDecUnits[i];
       }

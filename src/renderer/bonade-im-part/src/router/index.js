@@ -1,22 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
-Vue.use(Router);
 /* Layout */
 import Layout from '@/layout';
 // import dynamic_list from './dynamic_list'
-import dashboard from './module/dashboard';
-import form from './module/form';
-import cards from './module/cards';
-import table from './module/table';
-import demo from './module/demo';
-import templateTableView from './module/templateTableView';
-import demoView from './module/demoView';
-import tableCommon from './module/tableCommon';
-import form1 from './module/form1';
-import form3 from './module/form3';
-import form2 from './module/form2';
-import templateView from './module/templateView';
+import home from './module/home';
+
+
+Vue.use(Router);
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -45,114 +35,103 @@ import templateView from './module/templateView';
  * all roles can be accessed
  */
 export const constantRoutes = [
-  {
-    path: '/redirect',
-    component: Layout,
-    hidden: true,
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        component: () => import('@/view/redirect/index')
-      }
-    ]
-  },
-  {
-    path: '/login',
-    component: () => import('@/view/login/index'),
-    hidden: true
-  },
-  {
-    path: '/auth-redirect',
-    component: () => import('@/view/login/auth-redirect'),
-    hidden: true
-  },
-  {
-    path: '/404',
-    component: () => import('@/view/error-page/404'),
-    hidden: true
-  },
-  {
-    path: '/401',
-    component: () => import('@/view/error-page/401'),
-    hidden: true
-  },
-  {
-    path: '/templateFormAdd',
-    component: Layout,
-    hidden: true,
-    children: [{
-      path: 'index',
-      component: () => import('@/components/templateForm/formNew'),
-      name: 'FdTemplateFormAdd',
-      meta: {
-        title: '新增',
-        icon: ''
-      }
-    }]
-  },
-  {
-    path: '/templateFormAddPopup',
-    hidden: true,
-    component: () => import('@/components/templateForm/formNew')
-  },
+  // {
+  //   'path': '/redirect',
+  //   'component': Layout,
+  //   'hidden': true,
+  //   'children': [
+  //     {
+  //       'path': '/redirect/:path(.*)',
+  //       'component': () => import('@/view/redirect/index')
+  //     }
+  //   ]
+  // },
+  // {
+  //   'path': '/login',
+  //   'component': () => import('@/view/login/index'),
+  //   'hidden': true
+  // },
+  // {
+  //   'path': '/auth-redirect',
+  //   'component': () => import('@/view/login/auth-redirect'),
+  //   'hidden': true
+  // },
+  // {
+  //   'path': '/404',
+  //   'component': () => import('@/view/error-page/404'),
+  //   'hidden': true
+  // },
+  // {
+  //   'path': '/401',
+  //   'component': () => import('@/view/error-page/401'),
+  //   'hidden': true
+  // },
+  // {
+  //   'path': '/templateFormAdd',
+  //   'component': Layout,
+  //   'hidden': true,
+  //   'children': [{
+  //     'path': 'index',
+  //     'component': () => import('@/components/templateForm/formNew'),
+  //     'name': 'FdTemplateFormAdd',
+  //     'meta': {
+  //       'title': '新增',
+  //       'icon': ''
+  //     }
+  //   }]
+  // },
+  // {
+  //   'path': '/templateFormAddPopup',
+  //   'hidden': true,
+  //   'component': () => import('@/components/templateForm/formNew')
+  // },
 
-  {
-    path: '/templateFormTableAddPopup',
-    hidden: true,
-    component: () => import('@/components/templateForm/customList')
-  },
-  {
-    path: '/templateFormEdit',
-    component: Layout,
-    hidden: true,
-    children: [{
-      path: 'templateFormEdit',
-      component: () => import('@/components/templateForm/formEdit'),
-      name: 'FdTemplateFormEdit',
-      meta: {
-        title: '编辑',
-        icon: ''
-      }
-    }]
-  },
-  {
-    path: '/templateFormEditPopup',
-    hidden: true,
-    component: () => import('@/components/templateForm/formEdit')
-  },
-  {
-    path: '/templateFormView',
-    component: Layout,
-    hidden: true,
-    children: [{
-      path: 'templateFormView',
-      component: () => import('@/components/templateForm/formView'),
-      name: 'FdTemplateFormView',
-      meta: {
-        title: '查看',
-        icon: ''
-      }
-    }]
-  },
-  {
-    path: '/templateFormViewPopup',
-    hidden: true,
-    component: () => import('@/components/templateForm/formView')
-  },
+  // {
+  //   'path': '/templateFormTableAddPopup',
+  //   'hidden': true,
+  //   'component': () => import('@/components/templateForm/customList')
+  // },
+  // {
+  //   'path': '/templateFormEdit',
+  //   'component': Layout,
+  //   'hidden': true,
+  //   'children': [{
+  //     'path': 'templateFormEdit',
+  //     'component': () => import('@/components/templateForm/formEdit'),
+  //     'name': 'FdTemplateFormEdit',
+  //     'meta': {
+  //       'title': '编辑',
+  //       'icon': ''
+  //     }
+  //   }]
+  // },
+  // {
+  //   'path': '/templateFormEditPopup',
+  //   'hidden': true,
+  //   'component': () => import('@/components/templateForm/formEdit')
+  // },
+  // {
+  //   'path': '/templateFormView',
+  //   'component': Layout,
+  //   'hidden': true,
+  //   'children': [{
+  //     'path': 'templateFormView',
+  //     'component': () => import('@/components/templateForm/formView'),
+  //     'name': 'FdTemplateFormView',
+  //     'meta': {
+  //       'title': '查看',
+  //       'icon': ''
+  //     }
+  //   }]
+  // },
+  // {
+  //   'path': '/templateFormViewPopup',
+  //   'hidden': true,
+  //   'component': () => import('@/components/templateForm/formView')
+  // },
 
   // ...dynamic_list
-  dashboard,
-  form,
-  cards,
-  table,
-  demo,
-  templateTableView,
-  demoView,
-  tableCommon,
-  form1,
-  form3,
-  form2,
-  templateView
+  home
 ];
 
 /**
@@ -161,12 +140,12 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  { 'path': '*', 'redirect': '/404', 'hidden': true }
 ];
 
 const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+  'scrollBehavior': () => ({ 'y': 0 }),
+  'routes': constantRoutes
 });
 
 const router = createRouter();
@@ -174,6 +153,7 @@ const router = createRouter();
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter();
+
   router.matcher = newRouter.matcher; // reset router
 }
 
