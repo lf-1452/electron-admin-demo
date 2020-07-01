@@ -1,42 +1,30 @@
 {
-  "breadcrumbs.enabled": true,
-  "editor.tabSize": 2,
-  "editor.renderWhitespace": "boundary",
-  "editor.cursorBlinking": "smooth",
-  "editor.minimap.renderCharacters": false,
-  "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
-  "editor.fontLigatures": true,
-  "explorer.confirmDragAndDrop": false,
-  "extensions.autoUpdate": false,
-  "files.insertFinalNewline": true,
-  "git.autofetch": true,
-  "git.path": "F:\\Program Files\\Git\\cmd\\git.exe",
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/dist": true
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   },
-  "typescript.locale": "en",
-  "window.titleBarStyle": "custom",
-  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": 1,
-  "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Plastic - deprioritised punctuation",
-  "workbench.iconTheme": "vscode-great-icons",
-  "workbench.startupEditor": "newUntitledFile",
-   // 自动修复
-   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.sass": "sass-supremacy",
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatterOptions": {
+    "prettyhtml": {
+      "printWidth": 120
+    }
   },
-  "eslint.validate": ["javascript", "javascriptreact", "vue"],
-  "vsicons.projectDetection.autoReload": true,
-  "vsicons.dontShowNewVersionMessage": true,
-  "tslint.autoFixOnSave": true,
-  "debugwrapper.wrappers": {
-    "default": "console.log('$eSEL', $SEL)"
+  "eslint.options": {
+    "extensions": [
+      ".js",
+      ".vue",
+      ".ts",
+      ".tsx"
+    ]
   },
-  "prettier.tslintIntegration": true,
-  "cSpell.userWords": [
-    "Unmount"
-  ],
-  "jest.autoEnable": false,
+  // 以下为 sass 配置
+  "sassSupremacy.insertColons": false, // 是否插入冒号
+  "sassSupremacy.insertSemicolons": false, // 是否插入分好
+  "sassSupremacy.insertBraces": false, // 是否插入大括号
+  "sassSupremacy.insertNewLineAroundImports": false, // import之后是否换行
+  "sassSupremacy.insertNewLineAroundBlocks": false
 }

@@ -7,11 +7,11 @@ const {
   VueLoaderPlugin
 } = require('vue-loader');
 const plugins = [
-  process.env.NODE_ENV === 'development' ?
-    new HtmlWebpackPlugin({
+  process.env.NODE_ENV === 'development'
+    ? new HtmlWebpackPlugin({
       template: resolveUnderRootDir('src/renderer/bonade-im-part/web/index.html')
-    }) :
-    new HtmlWebpackPlugin({
+    })
+    : new HtmlWebpackPlugin({
       filename: resolveUnderRootDir(`${process.env.VUE_APP_TITLE}/index.html`),
       template: resolveUnderRootDir('src/renderer/bonade-im-part/web/index.html')
     }),

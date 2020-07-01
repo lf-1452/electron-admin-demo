@@ -10,8 +10,8 @@ let plugin = [
   new webpack.NoEmitOnErrorsPlugin(),
   new ElectronDevWebpackPlugin(),
   new FriendlyErrorsPlugin({
-    compilationSuccessInfo: {
-      messages: ['Your application main process is running here']
+    'compilationSuccessInfo': {
+      'messages': ['Your application main process is running here']
     }
   }),
   new webpack.DefinePlugin({
