@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const {
   resolveUnderRootDir
-} = require('../utils');
+} = require('../utils')
 const {
   VueLoaderPlugin
-} = require('vue-loader');
+} = require('vue-loader')
 const plugins = [
   process.env.NODE_ENV === 'development'
     ? new HtmlWebpackPlugin({
@@ -24,5 +24,5 @@ const plugins = [
     'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
     'process.env.VUE_APP_TITLE': JSON.stringify(process.env.VUE_APP_TITLE)
   })
-];
-module.exports = [...plugins];
+]
+module.exports = [...plugins]

@@ -3,7 +3,7 @@
   <div>
     <p style="color:red">{{  aa }}</p>
     <div @click="max" class="maxClass">
-      max1
+      max1223
     </div>
     <div @click="min" class="minClass">
       min1

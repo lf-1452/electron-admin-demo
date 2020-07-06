@@ -1,20 +1,20 @@
-const jsRules = require('../commonJs/jsRules');
-const styleRules = require('../commonJs/styleRules');
-const fileRules = require('../commonJs/fileRules');
-const plugins = require('./plugins');
-const rootPath = 'src/renderer/bonade-im-part/src';
+const jsRules = require('../commonJs/jsRules')
+const styleRules = require('../commonJs/styleRules')
+const fileRules = require('../commonJs/fileRules')
+const plugins = require('./plugins')
+const rootPath = 'src/renderer/bonade-im-part/src'
 const {
   mode,
   runEnv,
   resolveUnderRootDir
-} = require('../utils');
+} = require('../utils')
 const proxyObj = {
   'test': 'http://119.23.111.61:8080',
   'development': 'http://192.168.14.214:4000',
   'experience': 'https://imztty.bndxqc.com',
   'production': 'https://imzt.bndxqc.com'
-};
-const target = proxyObj[process.env.VUE_APP_TITLE];
+}
+const target = proxyObj[process.env.VUE_APP_TITLE]
 
 module.exports = {
   mode,
@@ -58,4 +58,4 @@ module.exports = {
       }
     }
   }
-};
+}

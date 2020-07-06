@@ -1,6 +1,6 @@
 const {
   resolveUnderRootDir
-} = require('../utils');
+} = require('../utils')
 
 module.exports = [
   {
@@ -24,4 +24,4 @@ module.exports = [
     'exclude': '/node_modules/',
     'loader': 'style-loader!css-loader?sourceMap'
   }
-];
+]

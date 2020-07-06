@@ -1,6 +1,6 @@
 const {
   resolveUnderRootDir
-} = require('../utils');
+} = require('../utils')
 
 module.exports = [
   {
@@ -14,7 +14,7 @@ module.exports = [
   },
   {
     'test': /\.svg$/,
-    'include': [resolveUnderRootDir('src/renderer/bonade-im-part/src/quill/assets/icons')], //配置svg
+    'include': [resolveUnderRootDir('src/renderer/bonade-im-part/src/quill/assets/icons')], // 配置svg
     'use': [
       {
         'loader': 'html-loader',
@@ -29,4 +29,4 @@ module.exports = [
     'exclude': [resolveUnderRootDir('src/renderer/bonade-im-part/src/quill/assets/icons')],
     'loader': 'url-loader?limit=50000&name=[path][name].[ext]' // [xx]是占位符写法  [path]代表服务器根目录 [name]代表转译前的文件名 [ext]代表转译前的文件类型名 如jpg/woff/svg等
   }
-];
+]

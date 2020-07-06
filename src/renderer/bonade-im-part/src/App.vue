@@ -40,8 +40,5 @@ html,body {
   height: 380px;
   border-radius: 190px;
   border: 1px solid green;
-  background: #fff;
-  overflow: hidden;
-  pointer-events: auto;
 }
 </style>

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+      // 与 Vue 的浏览器支持保持一致
+      "target": "es5",
+      "lib": [
+          "es2015",
+          "dom"
+      ],
+      "allowJs": true,
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "module": "commonjs",
+      "noImplicitAny": true, // 是否默认禁用 any
+      "moduleResolution": "node",
+      "experimentalDecorators": false,
+      "strictFunctionTypes": false,
+      "baseUrl": ".",
+      "paths": {
+          "@/*": ["../../src"]
+      }
+  },
+  "include": [
+      "../../src/**/*"
+  ],
+  "exclude": [
+      "../../node_modules",
+  ]
+}
