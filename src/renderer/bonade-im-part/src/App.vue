@@ -7,17 +7,41 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 @Component({
-  'name': 'App'
+  name: 'App'
 })
-export default class extends Vue {}
+export default class extends Vue {
+  mounted() {
+    // const remote = require("electron").remote;
+    // let win = remote.getCurrentWindow();
+
+    // window.addEventListener("mousemove", event => {
+    //   let flag = event.target === document.documentElement;
+
+    //   if (flag){
+    //     win.setIgnoreMouseEvents(true, { forward: true });
+    //   } else {
+    //     win.setIgnoreMouseEvents(false);
+    //   }
+    // });
+    // win.setIgnoreMouseEvents(true, { forward: true });
+  }
+}
 </script>
 
 <style lang="scss" scoped>
+html,body {
+  margin: 0px;
+  padding: 0px;
+  pointer-events: none;
+}
 #app {
-  height: 100%;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 380px;
+  height: 380px;
+  border-radius: 190px;
+  border: 1px solid green;
+  background: #fff;
   overflow: hidden;
-  border-radius: 4px;
-  background: #ffffff;
+  pointer-events: auto;
 }
 </style>

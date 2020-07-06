@@ -19,7 +19,7 @@ const target = proxyObj[process.env.VUE_APP_TITLE];
 module.exports = {
   mode,
   'entry': {
-    'app': resolveUnderRootDir(`${rootPath}/main.js`)
+    'app': resolveUnderRootDir(`${rootPath}/main.ts`)
   },
   'output': {
     'path': resolveUnderRootDir('dist/renderer/bonade-im-part'),

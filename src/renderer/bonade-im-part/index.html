@@ -14,13 +14,15 @@
     // 判断当前是否客户端
     // ipcRenderer从渲染器进程到主进程的异步通信
     // clipboard系统剪贴板上执行复制和粘贴操作
+    // const { ipcRenderer,ipcMain,clipboard,remote } = window.require('electron')
     window.ipcRenderer = require('electron').ipcRenderer;
     window.clipboard = require('electron').clipboard;
-    window.fs = require('fs');
     window.remote = require('electron').remote;
     window.Menu = require('electron').remote.Menu;
+
     window.MenuItem  = require('electron').remote.MenuItem;
     window.path = require('path');
+    window.fs = require('fs');
     // 检查更新
     ipcRenderer.send("checkForUpdate");
     // 接收信息

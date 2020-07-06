@@ -13,16 +13,27 @@ module.exports = [
     ]
   },
   {
-    'test': /\.(js|jsx)$/,
-    'loader': 'babel-loader'
+    test: /\.js$/,
+    loader: 'babel-loader'
   },
   {
-    'test': /\.ts(x)?$/,
-    'exclude': /node_modules/,
-    'use': [
-      'babel-loader'
+    test: /\.tsx?$/,
+    exclude: /node_modules/,
+    use: [
+      "babel-loader",
+      {
+        loader: "ts-loader",
+        options: { appendTsxSuffixTo: [/\.vue$/] }
+      }
     ]
   },
+  // {
+  //   'test': /\.ts(x)?$/,
+  //   'exclude': /node_modules/,
+  //   'use': [
+  //     'babel-loader'
+  //   ]
+  // },
   {
     'test': /\.(js|vue|ts|tsx|jsx)$/,
     'enforce': 'pre',

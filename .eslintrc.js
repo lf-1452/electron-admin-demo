@@ -31,7 +31,7 @@ module.exports = {
     "no-catch-shadow": 2,//禁止catch子句参数与外部作用域变量同名
     "no-class-assign": 2,//禁止给类赋值
     "no-cond-assign": 2,//禁止在条件表达式中使用赋值语句
-    "no-console": 2,//禁止使用console
+    "no-console": 0,//禁止使用console
     "no-const-assign": 2,//禁止修改const声明的变量
     "no-constant-condition": 2,//禁止在条件中使用常量表达式 if(true) if(1)
     "no-continue": 0,//禁止使用continue
@@ -47,7 +47,7 @@ module.exports = {
     "no-empty-character-class": 2,//正则表达式中的[]内容不能为空
     // "no-empty-label": 2,//禁止使用空label
     "no-eq-null": 2,//禁止对null使用==或!=运算符
-    "no-eval": 1,//禁止使用eval
+    "no-eval": 0,//禁止使用eval
     "no-ex-assign": 2,//禁止给catch语句中的异常参数赋值
     "no-extend-native": 2,//禁止扩展native对象
     "no-extra-bind": 2,//禁止不必要的函数绑定
@@ -120,8 +120,8 @@ module.exports = {
     "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
     "no-use-before-define": 2,//未定义前不能使用
     "no-useless-call": 2,//禁止不必要的call和apply
-    "no-void": 2,//禁用void操作符
-    "no-var": 0,//禁用var，用let和const代替
+    "no-void": 2,// 禁用void操作符
+    "no-var": 0,// 禁用var，用let和const代替
     "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],//不能有警告备注
     "no-with": 2,//禁用with
     "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
@@ -173,8 +173,8 @@ module.exports = {
     "prefer-const": 0,//首选const
     "prefer-spread": 0,//首选展开运算
     "prefer-reflect": 0,//首选Reflect的方法
-    "quotes": [1, "single"],//引号类型 `` "" ''
-    "quote-props":[2, "always"],//对象字面量中的属性名是否强制双引号
+    "quotes": 0,//引号类型 `` "" ''
+    "quote-props":0,//对象字面量中的属性名是否强制双引号
     "radix": 2,//parseInt必须指定第二个参数
     "id-match": 0,//命名检测
     "require-yield": 0,//生成器函数必须有yield
@@ -207,5 +207,9 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 0,
     '@typescript-eslint/interface-name-prefix': 0,
     '@typescript-eslint/no-var-requires': 0
+  },
+  'globals':{
+    'ipcRenderer': true,
+    'remote': true
   }
 };

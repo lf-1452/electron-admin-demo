@@ -1,3 +1,4 @@
+
 import Vue from 'vue';
 import App from '@/App.vue';
 import router from './router';
@@ -6,10 +7,10 @@ import 'babel-polyfill';
 
 // import Cookies from 'js-cookie';
 
-import Element from 'element-ui';
+// import Element from 'element-ui';
 // import * as directives from '@/directives/index.ts';
 
-Vue.use(Element, {});
+// Vue.use(Element, {});
 
 // Register global directives
 // Object.keys(directives).forEach(key => {
@@ -21,5 +22,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   // store,
-  'render': h => h(App)
+  render: h => h(App)
 }).$mount('#app');

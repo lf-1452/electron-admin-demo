@@ -1,30 +1,79 @@
 {
-  "editor.formatOnSave": true,
+  "window.zoomLevel": 1,
+  "git.ignoreMissingGitWarning": true, // 忽略“缺失git”的警告
+  "files.autoSave": "onFocusChange", // 离开页面自动保存
+  // "workbench.colorTheme": "Default Light+", // 配色
+  "editor.tabSize": 2, // 缩进，tab格数
+  "editor.fontSize": 14, // 字号
+  // 文本头
+  "fileheader.Author": "@Guojufeng",
+  "fileheader.LastModifiedBy": "@Guojufeng",
+  // 快捷浏览html页面
+  "view-in-browser.customBrowser": "chrome",
+  "open-in-browser.default": "chrome",
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  // 显示编辑时的控制字符（markdown中删除不干净出现的“s”）
+  "editor.renderControlCharacters": true,
+  "explorer.confirmDelete": false,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "python.jediEnabled": false,
+  "breadcrumbs.enabled": true,
+  // 每次保存的时候自动格式化
+  // "editor.formatOnType": true,
+  // 自动美化
+  "beautify.language": {
+    "js": {
+      "type": ["javascript", "json"],
+      "filename": [".eslintrc", ".jsbeautify"]
+    },
+    "css": ["css", "scss"],
+    "html": ["htm", "html", "vue"]
+  },
+  // 去掉代码结尾的分号
+  "prettier.semi": false,
+  // 单引号，而不是双引号
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  // prettier使用eslint格式校验
+  "prettier.eslintIntegration": true,
+  // #让函数(名)和后面的括号之间加个空格
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // 每次保存的时候将代码按eslint格式进行修复
+  "editor.formatOnSave": false,
+  // 自动修复
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "vetur.format.defaultFormatter.ts": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier",
-  "vetur.format.defaultFormatter.less": "prettier",
-  "vetur.format.defaultFormatter.sass": "sass-supremacy",
-  "vetur.format.defaultFormatter.html": "prettyhtml",
+  // 配置 ESLint 检查的文件类型
+  "eslint.validate": ["javascript", "vue", "html"],
+  // jsx中使用emmet自动补全代码
+  "emmet.triggerExpansionOnTab": true,
+  // 扩展emmet的支持
+  "emmet.includeLanguages": {
+    "wxml": "html",
+    "javascript": "javascriptreact"
+  },
+  // 让vue中的js按编辑器自带的ts格式进行格式化
+  // "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.validation.template": false,
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
   "vetur.format.defaultFormatterOptions": {
-    "prettyhtml": {
-      "printWidth": 120
+    "js-beautify-html": {
+      "wrap_attributes": "force-aligned"
+    },
+    // vue文件转换单引号、去掉分号
+    "prettier": {
+      "semi": false,
+      "singleQuote": true
     }
-  },
-  "eslint.options": {
-    "extensions": [
-      ".js",
-      ".vue",
-      ".ts",
-      ".tsx"
-    ]
-  },
-  // 以下为 sass 配置
-  "sassSupremacy.insertColons": false, // 是否插入冒号
-  "sassSupremacy.insertSemicolons": false, // 是否插入分好
-  "sassSupremacy.insertBraces": false, // 是否插入大括号
-  "sassSupremacy.insertNewLineAroundImports": false, // import之后是否换行
-  "sassSupremacy.insertNewLineAroundBlocks": false
+  }
 }
