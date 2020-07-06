@@ -27,16 +27,17 @@ export const fieldTypes = [
 
 export function transformData(data) {
   const result = [];
+
   for (let i = 0; i < data.length; i++) {
     const obj = {
-      type: '',
-      modelKey: '',
-      label: '',
-      props: {},
-      rules: [],
-      trigger: 'blur',
-      isRequired: data[i].isRequired,
-      template: { type: 'text' }
+      'type': '',
+      'modelKey': '',
+      'label': '',
+      'props': {},
+      'rules': [],
+      'trigger': 'blur',
+      'isRequired': data[i].isRequired,
+      'template': { 'type': 'text' }
     };
     const fieldType = data[i].componentValueType;
     const fieldKey = data[i].propertyCode;
@@ -63,6 +64,7 @@ export function transformData(data) {
       const {
         status
       } = template;
+
       if (status === 1) {
         obj.props.readonly = true;
       }
@@ -75,25 +77,26 @@ export function transformData(data) {
       obj.props.placeholder = '请输入';
       if (required) {
         obj.rules[0] = {
-          required: true,
-          message: '请输入',
-          trigger: 'blur'
+          'required': true,
+          'message': '请输入',
+          'trigger': 'blur'
         };
       }
       if (required && isValidate) {
         const LENGTH = validateCommand.LENGTH;
         const message = `长度在 1 到 ${LENGTH} 个字符`;
+
         obj.rules = [
           {
-            required: true,
-            message: '请输入',
-            trigger: 'blur'
+            'required': true,
+            'message': '请输入',
+            'trigger': 'blur'
           },
           {
-            min: 1,
-            max: LENGTH,
-            message: message,
-            trigger: 'blur'
+            'min': 1,
+            'max': LENGTH,
+            'message': message,
+            'trigger': 'blur'
           }
         ];
       }
@@ -104,25 +107,26 @@ export function transformData(data) {
       obj.props.autosize = true;
       if (required) {
         obj.rules[0] = {
-          required: true,
-          message: '请输入',
-          trigger: 'blur'
+          'required': true,
+          'message': '请输入',
+          'trigger': 'blur'
         };
       }
       if (required && isValidate) {
         const LENGTH = validateCommand.LENGTH;
         const message = `长度在 1 到 ${LENGTH} 个字符`;
+
         obj.rules = [
           {
-            required: true,
-            message: '请输入',
-            trigger: 'blur'
+            'required': true,
+            'message': '请输入',
+            'trigger': 'blur'
           },
           {
-            min: 1,
-            max: LENGTH,
-            message: message,
-            trigger: 'blur'
+            'min': 1,
+            'max': LENGTH,
+            'message': message,
+            'trigger': 'blur'
           }
         ];
       }
@@ -135,9 +139,10 @@ export function transformData(data) {
     if (fieldType === 'DATE') {
       const TYPE = template.type;
       const DATE_FORMAT = validateCommand.DATE_FORMAT;
+
       obj.props = {
-        type: TYPE,
-        valueFormat: DATE_FORMAT
+        'type': TYPE,
+        'valueFormat': DATE_FORMAT
       };
     }
 

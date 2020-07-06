@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      default_model: {
+      'default_model': {
         'componentType': 'TEXT',
         'componentTypeDesc': '',
         'fieldName': '',
@@ -17,8 +17,8 @@ export default {
         'isDraggable': false,
         'isLine': false
       },
-      tables: [],
-      tables1: [
+      'tables': [],
+      'tables1': [
         {
           'id': 92297,
           'orgId': '7f245313a9154c82af5cc160a667de30',
@@ -216,7 +216,7 @@ export default {
           'required': false
         }
       ],
-      test: [
+      'test': [
         {
           'isListView': '1',
           'isReadonly': '1',
@@ -279,10 +279,10 @@ export default {
           'isLine': false
         }
       ],
-      dialogVisible: false,
-      dialogVisible1: false,
-      itemData: null,
-      moduleField: null
+      'dialogVisible': false,
+      'dialogVisible1': false,
+      'itemData': null,
+      'moduleField': null
     };
   },
   created() {}

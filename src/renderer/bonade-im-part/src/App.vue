@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: YanQi
+ * @Date: 2020-06-24 18:05:08
+ * @LastEditors: YanQi
+ * @LastEditTime: 2020-07-06 11:13:18
+-->
 <template>
   <div id="app">
     <router-view />
@@ -36,10 +44,10 @@ html,body {
 }
 #app {
   box-sizing: border-box;
-  width: 380px;
-  height: 380px;
-  border-radius: 190px;
-  border: 1px solid green;
+  // width: 380px;
+  // height: 380px;
+  // border-radius: 190px;
+  // border: 1px solid green;
   background: #fff;
   overflow: hidden;
   pointer-events: auto;
