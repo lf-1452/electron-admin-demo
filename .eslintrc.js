@@ -53,6 +53,11 @@ module.exports = {
       "max-params": [0, 3], //函数最多只能有3个参数
       "max-statements": [0, 10], //函数内最多有几个声明
       "semi": [2, "always"],//语句强制分号结尾
+      "singleQuote": true,//把双引号换成单引号
+      "no-eval": 1,//禁止使用eval
+      "no-mixed-spaces-and-tabs": [2, false],//禁止混用tab和空格
+      "arrow-parens": 0,//箭头函数用小括号括起来
+      "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
       "strict": 2,//使用严格模式
       "@typescript-eslint/no-var-requires": 0,
       "@typescript-eslint/explicit-function-return-type":0

@@ -4,8 +4,8 @@ import {
 import {
     images
 } from '../resource';
-import noticationWin from './noticationWin'
-import largePictureWin from './largePictureWin'
+import noticationWin from './noticationWin';
+import largePictureWin from './largePictureWin';
 export default {
     wordWin: null,
     outLinkWin: null,
@@ -36,10 +36,10 @@ export default {
                 webPreferences: {
                     nodeIntegration: true
                 }
-            })
+            });
         }
         this.wordWin.loadURL(url);
         this.wordWin.show();
     }
 
-}
+};
