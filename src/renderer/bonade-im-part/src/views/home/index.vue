@@ -7,45 +7,20 @@
  * @LastEditTime: 2020-07-06 11:11:46
 -->
 
+
+
+
 <template>
-  <div>
-    <p style="color:red">{{  aa }}</p>
-    <div class="maxClass">
-      max1223
-    </div>
-    <div class="minClass">
-      min1
-    </div>
+  <div class="home">
   </div>
-</template>;
+</template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 @Component({
     name: 'Home'
 })
-export default class extends Vue {
-  aa = '22';
-  // max(){
-  // console.log('最大');
-  // ipcRenderer && ipcRenderer.send('maximization');
-  // const { dialog,app } = require("electron").remote;
-  // let filePath = await dialog.showOpenDialog({
-  //   title: "我需要打开一个文件",
-  //   buttonLabel: "按此打开文件",
-  //   defaultPath: app.getPath('pictures'),
-  //   properties:"multiSelections",
-  //   filters: [
-  //     { name: "图片", extensions: ["jpg", "png", "gif"] },
-  //     { name: "视频", extensions: ["mkv", "avi", "mp4"] }
-  //   ]
-  // });
-  //  }
-
-    // min(){
-    // ipcRenderer && ipcRenderer.send('minimize');
-    // }
-}
+export default class extends Vue {}
 </script>
 
 <style lang="scss" scoped>
