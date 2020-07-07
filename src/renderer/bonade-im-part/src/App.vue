@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: YanQi
+ * @Date: 2020-06-24 18:05:08
+ * @LastEditors: YanQi
+ * @LastEditTime: 2020-07-06 11:13:18
+-->
 <template>
   <div id="app">
     <router-view />
@@ -7,25 +15,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 @Component({
-  name: 'App'
+    name: 'App'
 })
-export default class extends Vue {
-  mounted() {
-    // const remote = require("electron").remote;
-    // let win = remote.getCurrentWindow();
-
-    // window.addEventListener("mousemove", event => {
-    //   let flag = event.target === document.documentElement;
-
-    //   if (flag){
-    //     win.setIgnoreMouseEvents(true, { forward: true });
-    //   } else {
-    //     win.setIgnoreMouseEvents(false);
-    //   }
-    // });
-    // win.setIgnoreMouseEvents(true, { forward: true });
-  }
-}
+export default class extends Vue {}
 </script>
 
 <style lang="scss" scoped>

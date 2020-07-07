@@ -10,10 +10,7 @@ module.exports = {
       "plugin:@typescript-eslint/recommended",
       "plugin:vue/essential",
   ],
-  "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-  },
+  "globals": {},
   "parserOptions": {
       "ecmaVersion": 2018,
       "parser": "@typescript-eslint/parser",
@@ -57,6 +54,7 @@ module.exports = {
       "max-statements": [0, 10], //函数内最多有几个声明
       "semi": [2, "always"],//语句强制分号结尾
       "strict": 2,//使用严格模式
-      '@typescript-eslint/no-var-requires': 0,
+      "@typescript-eslint/no-var-requires": 0,
+      "@typescript-eslint/explicit-function-return-type":0
   }
 };
