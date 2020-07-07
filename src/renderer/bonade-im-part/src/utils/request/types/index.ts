@@ -19,7 +19,7 @@ export interface AxiosBaseConfig {
     responseType?: XMLHttpRequestResponseType  // 服务器响应的数据类型
     timeout?: number // 超时时间
     withCredentials?: boolean // 跨域请求是否需要凭证
-    proxy?: any // 
+    proxy?: any //
 }
 
 

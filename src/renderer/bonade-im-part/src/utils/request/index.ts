@@ -39,7 +39,7 @@ class AxiosRequest {
     // 没有data -> get/delete/head
     private NoneData(method: Method, url: string, config?: AxiosBaseConfig) {
         const o = Object.assign(config || {}, { method, url })
-        
+
         return this.request(o)
     }
 
