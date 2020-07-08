@@ -12,7 +12,7 @@
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         default-active="2"
-        :background-color="variables.menuBg"
+        :background-color="menuBg"
         text-color="#fff"
         active-text-color="#ffd04b"
         :unique-opened="false"
@@ -20,7 +20,8 @@
         mode="vertical"
       >
         <sidebar-item v-for="(item,index) in list" :key="index" :item="item"></sidebar-item>
-      </el-menu>{{variables}}
+      </el-menu>
+      {{variables}}
     </el-scrollbar>
   </div>
 </template>
@@ -29,7 +30,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { RouteConfig } from "vue-router";
 import SidebarItem from "./SidebarItem.vue";
-import variables from "../../../styles/style.scss";
+import variables, { menuBg } from "../../../styles/style.scss";
 @Component({
   name: "Sidebar",
   components: {
@@ -39,9 +40,13 @@ import variables from "../../../styles/style.scss";
 export default class extends Vue {
   @Prop({ default: () => [] }) private list!: RouteConfig;
 
+  get menuBg() {
+    return menuBg;
+  }
+
   get variables() {
-    console.log(variables)
-    return variables;
+    console.log('====引入variables报错:',variables);
+    return false;
   }
 }
 </script>
