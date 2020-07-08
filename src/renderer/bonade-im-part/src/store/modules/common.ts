@@ -1,7 +1,7 @@
 // 全局通用
 import store from '@/store'
 import { Module, VuexModule, Mutation, Action, getModule } from 'vuex-module-decorators'
-import { hasValue } from '@/utils/utils'
+import { hasValue } from '@/utils'
 
 
 export interface commonState {

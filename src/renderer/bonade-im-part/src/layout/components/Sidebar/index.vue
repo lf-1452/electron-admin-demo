@@ -1,11 +1,11 @@
 <!--
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: YanQi
  * @Date: 2020-07-07 11:23:23
  * @LastEditors: YanQi
  * @LastEditTime: 2020-07-07 11:35:43
---> 
+-->
 <template>
     <!-- 左侧菜单 -->
     <div class="nav-sideber">
@@ -37,7 +37,7 @@ import SidebarItem from './SidebarItem.vue'
 })
 
 export default class extends Vue {
-    
+
 }
 </script>
 
