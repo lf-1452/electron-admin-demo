@@ -26,11 +26,4 @@ html,body {
   padding: 0px;
   pointer-events: none;
 }
-#app {
-  box-sizing: border-box;
-  width: 380px;
-  height: 380px;
-  border-radius: 190px;
-  border: 1px solid green;
-}
 </style>

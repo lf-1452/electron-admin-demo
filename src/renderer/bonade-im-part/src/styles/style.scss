@@ -10,12 +10,12 @@ $tiffany: #4ab7bd;
 $yellow: #fec171;
 $panGreen: #30b08f;
 
-// Sidebar
-$sideBarWidth: 210px;
+// 菜单-Sidebar
+$sideBarWidth: 210px; // 菜单宽度
 $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
 $subMenuActiveText: #f4f4f5;
-$menuBg: #304156;
+$menuBg: #304156;  // 菜单背景
 $menuText: #bfcbd9;
 $menuActiveText: #409eff; // Also see settings.sidebarTextTheme
 
@@ -27,7 +27,7 @@ $loginCursorColor: #fff;
 
 // The :export directive is the magic sauce for webpack
 // https://mattferderer.com/use-sass-variables-in-typescript-and-javascript
-:export {
+:export default {
   menuBg: $menuBg;
   menuText: $menuText;
   menuActiveText: $menuActiveText;
