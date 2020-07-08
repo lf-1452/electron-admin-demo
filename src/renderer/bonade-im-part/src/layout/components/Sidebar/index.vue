@@ -12,7 +12,7 @@
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         default-active="2"
-        background-color="#000"
+        :background-color="variables.menuBg"
         text-color="#fff"
         active-text-color="#ffd04b"
         :unique-opened="false"
