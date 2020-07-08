@@ -1,18 +1,18 @@
 <!--
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: YanQi
  * @Date: 2020-07-07 11:23:23
  * @LastEditors: YanQi
  * @LastEditTime: 2020-07-07 11:35:43
---> 
+-->
 <template>
   <!-- 左侧菜单 -->
   <div class="nav-sideber">
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         default-active="2"
-        :background-color="variables.menuBg"
+        background-color="#000"
         text-color="#fff"
         active-text-color="#ffd04b"
         :unique-opened="false"
