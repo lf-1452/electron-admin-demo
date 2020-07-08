@@ -3,7 +3,8 @@ import Router from 'vue-router';
 import Layout from '@/layout/index.vue'
 Vue.use(Router);
 
-import testIndex from './moudules/test' 
+import testIndex from './moudules/test'
+import testIndex2 from './moudules/test-2'
 
 
 /*
@@ -22,19 +23,20 @@ import testIndex from './moudules/test'
 */
 
 
-export default new Router({
-    routes: [
-        { path: '/', redirect: '/index/indexPage' },
-        {
-            path: '/index', component: Layout, name: 'mainView',
-            meta: {
-                title: '首页',
-                icon: '',
-                hidden: true
-            }
-        },
-        // modules start
-            testIndex
-        // modules end
-    ]
-});
+export const routes = [
+    { path: '/', redirect: '/index' },
+    {
+        path: '/index', component: Layout, name: 'mainView',
+        meta: {
+            title: '首页',
+            icon: '',
+            hidden: true
+        }
+    },
+    // modules start
+    testIndex,
+    testIndex2
+    // modules end
+]
+
+export default new Router({ routes: routes });

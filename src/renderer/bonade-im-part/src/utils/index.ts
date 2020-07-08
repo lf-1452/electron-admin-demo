@@ -12,3 +12,11 @@ export const hasValue = (key: string | number, value: string | number, list: any
 
     return false
 }
+
+
+/**
+ * @description 是否有子级childen
+ */
+export const hasChild = (item: any): boolean => {
+    return item.children && item.children.length !== 0
+}

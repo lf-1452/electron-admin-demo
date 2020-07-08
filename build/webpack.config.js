@@ -5,6 +5,10 @@ const WebpackDevServer = require('webpack-dev-server')
 const main = require('./main/webpack.config')
 const { devServer, ...renderer } = require('./renderer/webpack.config')
 
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 // 主线程打包
 webpack(main, (err, stats) => {
   if (err) {

@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { commonModule } from './modules/common'
+import { commonState } from './modules/common'
 
 
 Vue.use(Vuex)
 
 export interface StoreModules {
-    // commonModule: commonModule
+    common: commonState
 }
 
  const store = new Vuex.Store<StoreModules>({})
