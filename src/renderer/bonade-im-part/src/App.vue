@@ -8,19 +8,29 @@
 -->
 <template>
   <div id="app">
+    {{ variables }}
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import variables from '@/styles/_variables.scss'
 @Component({
     name: 'App'
 })
-export default class extends Vue {}
+export default class extends Vue {
+  get variables() {
+    console.log(variables)
+    return variables
+  }
+}
 </script>
 
-<style lang="scss" scoped>
+
+<style lang="scss">
+// @import "~@/styles/_variables.scss";
+
 html,body {
   margin: 0px;
   padding: 0px;
