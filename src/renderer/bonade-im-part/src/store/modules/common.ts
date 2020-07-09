@@ -73,6 +73,7 @@ function _createRouteMenus(routersList: any[], whritRouterList: any[]): [] {
             list.push(obj)
         }
     })
+    console.log(list)
     return list
 }
 

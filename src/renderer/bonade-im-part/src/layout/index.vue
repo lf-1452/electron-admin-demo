@@ -1,4 +1,4 @@
-<!--
+<!-- 
  * @Descripttion: 
  * @version: 
  * @Author: YanQi
@@ -6,6 +6,8 @@
  * @LastEditors: YanQi
  * @LastEditTime: 2020-07-07 11:49:03
 --> 
+
+
 <template>
   <div class="app-wrapper">
     <!-- 左侧路由菜单 -->
@@ -14,10 +16,9 @@
     </div>
     <!-- 右侧内容区 -->
     <div class="main-container">
-      <div>
         <!-- 右侧顶部菜单 -->
+        
         <!-- 右侧页面内容显示区 -->
-      </div>
     </div>
   </div>
 </template>

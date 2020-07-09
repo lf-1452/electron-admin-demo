@@ -1,3 +1,13 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: killi
+ * @Date: 2020-07-08 14:23:51
+ * @LastEditors: killi
+ * @LastEditTime: 2020-07-08 19:49:05
+--> 
+
+
 <template>
   <!-- 左侧菜单内容 -->
   <div class="SidebarItem">
@@ -7,7 +17,7 @@
         <i class="el-icon-location"></i>
         <span>{{item.meta.title}}</span>
       </template>
-      <el-menu-item :index="son.name" v-for="(son,sonIndex) in item.children" :key="sonIndex">{{son.meta.title}}</el-menu-item>
+      <sidebar-item v-for="(son,sonIndex) in item.children" :key="sonIndex" :item="son"></sidebar-item>
     </el-submenu>
 
     <!-- 没有子级 -->
