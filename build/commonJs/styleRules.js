@@ -14,7 +14,11 @@ module.exports = [
       {
         'loader': 'style-resources-loader',
         'options': {
-          'patterns': [resolveUnderRootDir('src/renderer/bonade-im-part/src/styles/style.scss')]
+          resolveUrl: true,
+          patterns: [
+            // resolveUnderRootDir('src/renderer/bonade-im-part/src/styles/style.scss'),
+            resolveUnderRootDir('src/renderer/bonade-im-part/src/styles/_variables.scss')
+          ]
         }
       }
     ]
